@@ -1,0 +1,7 @@
+{
+  "name": "fitbulk",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

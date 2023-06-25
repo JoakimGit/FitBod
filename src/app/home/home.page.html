@@ -7,17 +7,57 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">
+        <div class="bg-slate-900">Blank</div>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div class="text-center absolute left-0 right-0 top-1/2 -translate-y-1/2">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">
-        UI Components
-      </a>
-    </p>
-  </div>
+  <ion-segment color="medium" [(ngModel)]="selectedSegment">
+    <ion-segment-button *ngFor="let segment of segmentList; let i = index" class="bg-orange-900 border-r border-black"
+      [value]="segment" (click)="segmentSelected(segment, i)">
+      <ion-label>{{segment}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <swiper #swiper (slideChange)="onSlideChange($event)" class="h-[calc(100%_-_48px)] text-center text-white text-lg">
+    <ng-template swiperSlide>
+      <div class="h-full flex justify-center items-center text-slate-100 rounded-lg">1</div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="h-full flex justify-center items-center text-slate-100 rounded-lg">2</div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="h-full flex justify-center items-center text-slate-100 rounded-lg">3</div>
+    </ng-template>
+  </swiper>
+
+
+
+
+
+
+  <ion-fab slot="fixed" horizontal="center" vertical="bottom">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <label class="text-white">Workout</label>
+      <ion-fab-button>
+        <ion-icon name="chevron-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end" class="-rotate-45 origin-left">
+      <label class="text-white">Exercise</label>
+      <ion-fab-button>
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start" class="rotate-45 origin-right">
+      <label class="text-white">Routine</label>
+      <ion-fab-button>
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
